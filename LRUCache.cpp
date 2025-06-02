@@ -8,14 +8,13 @@ int LRUCache::get(int key) {
         return -1;
     }
 
-    // Move the accessed item to the front (most recently used)
+    // Move the accessed item to the front from most recently used
     _cache.splice(_cache.begin(), _cache, it->second);
     return it->second->second;
 }
 
 void LRUCache::put(int key, int value) {
     auto it = _map.find(key);
-
     if (it != _map.end()) {
         // Update the value and move to front
         it->second->second = value;
